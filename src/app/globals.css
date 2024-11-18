@@ -4,7 +4,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2D2D2D;
+  --gray2: #00000005;
+  --gray10: #0000001a;
+  --gray40: #00000066;
+  --green-buttons: #00BC32;
+  --red-buttons: #D62000;
 }
 
 /* @media (prefers-color-scheme: dark) {

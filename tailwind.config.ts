@@ -11,7 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gray2: "var(--gray2)",
+        gray10: "var(--gray10)",
+        gray40: "var(--gray40)",
+        greenButtons: "var(--green-buttons)",
+        redButtons: "var(--red-buttons)",
       },
+      backgroundImage: {
+        'navbar': "url('/images/bg-light.png')"
+      }
     },
   },
   plugins: [],

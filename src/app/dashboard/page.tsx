@@ -11,7 +11,6 @@ export default async function Page(props: {
     const patient = searchParams?.patient || '';
     return(
         <div>
-            <p>heyy</p>
             <Search placeholder="Vyhledejte pacienta"/>
             <PatientList query={patient}/>
         </div>
