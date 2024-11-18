@@ -58,3 +58,34 @@ export async function fetchPatientById(searchFor: number): Promise<Patient> {
     throw new Error('Nepodařilo se načíst data');
   }
 }
+
+export async function updatePatientDiagnosis(searchFor: string, diagnosis: string) {
+  console.log(`Aktualizujeme diagnózu pro pacienta s ID ${searchFor}`);
+
+  const query = `
+    mutation UpdateDiagnosis {
+      updateDiagnosis(id: "${searchFor}", diagnosis: "${diagnosis}") {
+        id
+        name
+        age
+        gender
+        email
+        phone
+        address
+        photoUrl
+        mriUrl
+        diagnosis
+      }
+    }
+  `;
+
+  console.log(query);
+
+  try {
+    const data = await client.request<{ updateDiagnosis: Patient }>(query);
+    return data.updateDiagnosis;
+  } catch (error) {
+    console.error('Chyba při aktualizaci diagnózy:', error);
+    throw new Error('Nepodařilo se aktualizovat diagnózu');
+  }
+}
