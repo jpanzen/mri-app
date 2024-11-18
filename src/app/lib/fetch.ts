@@ -5,7 +5,7 @@ const endpoint = 'http://localhost:4000/graphql';
 const client = new GraphQLClient(endpoint);
 
 export async function fetchFilteredPatients(searchFor: string): Promise<Patient[]> {
-    console.log(`hledááme ${searchFor}`);
+  console.log(`hledááme ${searchFor}`);
   const query = `
     query SearchPatientByName {
         searchPatientByName(name: "${searchFor}") {
@@ -28,6 +28,33 @@ export async function fetchFilteredPatients(searchFor: string): Promise<Patient[
     return data.searchPatientByName;
   } catch (error) {
     console.error('Chyba při načítání pacientů:', error);
+    throw new Error('Nepodařilo se načíst data');
+  }
+}
+
+export async function fetchPatientById(searchFor: number): Promise<Patient> {
+  console.log(`hledááme id ${searchFor}`);
+  const query = `
+    query SearchPatientById {
+      searchPatientById(id: "${searchFor}") {
+        id
+        name
+        age
+        gender
+        email
+        phone
+        address
+        photoUrl
+        mriUrl
+        diagnosis
+      }
+    }
+  `;
+  try{
+    const data = await client.request<{ searchPatientById: Patient }>(query);
+    return data.searchPatientById;
+  } catch (error){
+    console.error('Chyba při hledání pacienta:', error);
     throw new Error('Nepodařilo se načíst data');
   }
 }

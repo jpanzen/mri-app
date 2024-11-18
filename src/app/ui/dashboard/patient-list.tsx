@@ -1,8 +1,8 @@
 import { fetchFilteredPatients } from "@/app/lib/fetch";
+import Link from "next/link";
 
 export default async function PatientList({ query }: { query: string }) {
   const patients = await fetchFilteredPatients(query);
-
   console.log(patients);
   
   return (
@@ -16,6 +16,7 @@ export default async function PatientList({ query }: { query: string }) {
             <p>Email: {patient.email}</p>
             <p>Address: {patient.address}</p>
             <img src={patient.photoUrl} alt={`Photo of ${patient.name}`} width={100} />
+            <Link  href={{ pathname: '/dashboard/patient', query: {id: patient.id} }}>Náhled pacienta</Link>
           </li>
         ))}
       </ul>
