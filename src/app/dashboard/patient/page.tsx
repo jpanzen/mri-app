@@ -102,7 +102,7 @@ export default function Page(props: {
           </div>
 
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-[20px]">
             <label htmlFor="diagnosis" className="hidden">Diagnóza</label>
             <textarea
               id="diagnosis"
@@ -114,7 +114,8 @@ export default function Page(props: {
               className="rounded-[6px] bg-gray2 border-[1px] border-gray10 p-[10px] text-gray40 w-full h-fit"
             />
             <div>
-              <button type="submit" disabled={isUpdating}>
+              <button type="submit" disabled={isUpdating} className="flex flex-row gap-[10px] p-[10px] pr-[16px] rounded-[6px] bg-greenButtons text-background font-bold">
+                <Image src="/save.svg" width={24} height={24} alt="Save icon" />
                 {isUpdating ? "Aktualizuji..." : "Aktualizovat"}
               </button>
             </div>
