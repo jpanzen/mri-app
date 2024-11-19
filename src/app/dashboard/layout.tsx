@@ -4,7 +4,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
       <>
         <Navbar />
-        <div className="px-[300px]">
+        <div  className="2xl:px-[300px] lg:px-[120px] md:px-[60px] px-[20px]">
           {children}
         </div>
       </>
