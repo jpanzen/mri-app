@@ -20,7 +20,7 @@ export default function Page(props: {
   useEffect(() => {
     const loadPatient = async () => {
       const searchParams = await props.searchParams;
-      const id = Math.max(1, Math.min(6, Number(searchParams?.id) || 1));
+      const id = Math.max(1, Math.min(10, Number(searchParams?.id) || 1));
       setPatientId(id);
       const patientData = await fetchPatientById(id);
       setPatient(patientData);
@@ -64,7 +64,7 @@ export default function Page(props: {
                 <Image src="/right.svg" width={24} height={24} alt="Left icon" className="rotate-180" />
               </Link>
             )}
-            {patientId < 6 && (
+            {patientId < 10 && (
               <Link href={{ pathname: "/dashboard/patient", query: { id: patientId + 1 } }} className="px-[8px] py-[8px] bg-foreground rounded-[6px]">
                 <Image src="/right.svg" width={24} height={24} alt="Left icon" />
               </Link>
